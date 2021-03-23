@@ -55,7 +55,7 @@ struct EditCategoryExpense: View {
         let newExpense = CategoryExpense(context: self.moc)
         newExpense.expenseName = trimmedExpense
         newExpense.expenseAmount = Double(trimmedAmount) ?? 0
-//        newExpense.spendingCategory = self.spendingCategory
+        newExpense.spendingCategory = self.spendingCategory
         
         try? self.moc.save()
         self.presentationMode.wrappedValue.dismiss()
