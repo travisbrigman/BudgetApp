@@ -1,10 +1,27 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19G46c" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="CategoryExpense" representedClassName=".CategoryExpense" syncable="YES">
+        <attribute name="expenseAmount" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="expenseName" optional="YES" attributeType="String"/>
+        <relationship name="spendingCategory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SpendingCategory" inverseName="expenses" inverseEntity="SpendingCategory"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="expenseName"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
     <entity name="SpendingCategory" representedClassName=".SpendingCategory" syncable="YES">
         <attribute name="categoryName" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="expenses" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CategoryExpense" inverseName="spendingCategory" inverseEntity="CategoryExpense"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="categoryName"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
     </entity>
     <elements>
-        <element name="SpendingCategory" positionX="-54" positionY="-9" width="128" height="73"/>
+        <element name="CategoryExpense" positionX="1533.1328125" positionY="-3819.23828125" width="156.14453125" height="88"/>
+        <element name="SpendingCategory" positionX="1188.3359375" positionY="-3925.70703125" width="128" height="88"/>
     </elements>
 </model>

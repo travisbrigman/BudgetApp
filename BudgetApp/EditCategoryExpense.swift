@@ -5,13 +5,13 @@
 //  Created by Travis Brigman on 3/22/21.
 //  Copyright © 2021 Travis Brigman. All rights reserved.
 //
-/*
+
 import Foundation
 import SwiftUI
 
 struct EditCategoryExpense: View {
     @Environment(\.presentationMode) var presentationMode
-    @EnvironmentObject var spendingCategories: SpendingCategories
+    @Environment(\.managedObjectContext) var moc
     @State private var expenseNameKey = ""
     @State private var expenseAmountValue = ""
     var spendingCategory: SpendingCategory
@@ -26,11 +26,11 @@ struct EditCategoryExpense: View {
                 }
 
                 Section {
-                    ForEach(spendingCategory.expenseItems.sorted(by: <), id: \.key) { key, value in
+                    List(spendingCategory.expensesArray, id: \.self ) { item in
                         HStack {
-                            Text(key)
+                            Text(item.wrappedExpenseName)
                             Spacer()
-                            Text("$\(value)")
+                            Text("$\(item.expenseAmount)")
                         }
                         .padding(.horizontal)
                     }
@@ -52,9 +52,13 @@ struct EditCategoryExpense: View {
         let trimmedAmount = expenseAmountValue.trimmingCharacters(in: .whitespaces)
         
         guard trimmedExpense.isEmpty == false || trimmedAmount.isEmpty == false else { return }
-
-        spendingCategories.addExpense(spendingCategory.id, trimmedExpense, trimmedAmount)
+        let newExpense = CategoryExpense(context: self.moc)
+        newExpense.expenseName = trimmedExpense
+        newExpense.expenseAmount = Double(trimmedAmount) ?? 0
+//        newExpense.spendingCategory = self.spendingCategory
         
+        try? self.moc.save()
+        self.presentationMode.wrappedValue.dismiss()
     }
 }
 
@@ -64,4 +68,4 @@ struct EditCategoryExpense: View {
 //    }
 //}
 
-*/
+

@@ -5,62 +5,47 @@
 //  Created by Travis Brigman on 3/22/21.
 //  Copyright © 2021 Travis Brigman. All rights reserved.
 //
-/*
-import Foundation
+
 import SwiftUI
 
-struct EditCategoryExpense: View {
-    @Environment(\.presentationMode) var presentationMode
-    @EnvironmentObject var spendingCategories: SpendingCategories
-    @State private var expenseNameKey = ""
-    @State private var expenseAmountValue = ""
-    var spendingCategory: SpendingCategory
+struct ExpenseDetailView: View {
+    @Environment(\.managedObjectContext) var moc
+    let category: SpendingCategory
+    @State private var isShowingEditExpenseItem = false
+    
     var body: some View {
-       NavigationView {
-            List {
-                Section(header: Text("Add new Category Expense")) {
-                    TextField("Expense", text: $expenseNameKey)
-                    TextField("Amount", text: $expenseAmountValue)
-                    
-                    Button("Add Expense", action: addExpense)
-                }
-
-                Section {
-                    ForEach(spendingCategory.expenseItems.sorted(by: <), id: \.key) { key, value in
-                        HStack {
-                            Text(key)
-                            Spacer()
-                            Text("$\(value)")
-                        }
-                        .padding(.horizontal)
-                    }
-                }
+        
+        NavigationView{
+            List(category.expensesArray, id: \.self) { lineItem in
+            HStack {
+                Text(lineItem.wrappedExpenseName)
+                Spacer()
+                Text("$\(lineItem.expenseAmount)")
             }
-            .navigationBarTitle("Edit Expenses")
-            .navigationBarItems(trailing: Button("Done", action: dismiss))
-            .listStyle(GroupedListStyle())
+            .padding(.horizontal)
         }
-    }
-    
-    
-    func dismiss() {
-        presentationMode.wrappedValue.dismiss()
-    }
-    
-    func addExpense() {
-        let trimmedExpense = expenseNameKey.trimmingCharacters(in: .whitespaces)
-        let trimmedAmount = expenseAmountValue.trimmingCharacters(in: .whitespaces)
-        
-        guard trimmedExpense.isEmpty == false || trimmedAmount.isEmpty == false else { return }
-
-        spendingCategories.addExpense(spendingCategory.id, trimmedExpense, trimmedAmount)
-        
+        }
+            
+        .navigationBarItems(trailing: Button(action: {
+            self.isShowingEditExpenseItem = true
+            
+        }) {
+            Image(systemName: "plus.square")
+            Text("Expense")
+        })
+        .sheet(isPresented: $isShowingEditExpenseItem) {
+            EditCategoryExpense(spendingCategory: self.category)
+                .environmentObject(self.category)
+        }
+ 
     }
 }
 
-//struct EditCategoryExpense_Previews: PreviewProvider {
+//struct ExpenseDetailView_Previews: PreviewProvider {
 //    static var previews: some View {
-//        EditCategoryExpense(spendingCategory: SpendingCategory(from: <#Decoder#>))
+//        ExpenseDetailView()
 //    }
 //}
-*/
+
+ 
+ 

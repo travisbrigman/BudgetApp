@@ -24,7 +24,6 @@ class Budget: ObservableObject {
 }
 
 struct ContentView: View {
-//    @ObservedObject var spendingCategories = SpendingCategories()
     @Environment(\.managedObjectContext) var moc
     @FetchRequest(entity: SpendingCategory.entity(), sortDescriptors: []) var spendingCategories: FetchedResults<SpendingCategory>
     @ObservedObject private var budget = Budget()
@@ -60,8 +59,7 @@ struct ContentView: View {
                 
                 List(spendingCategories, id: \.self) { category in
                     VStack {
-                        Text(category.wrappedCategoryName)
-//                        NavigationLink(category.wrappedCategoryName, destination: ExpenseDetailView(category: category))
+                        NavigationLink(category.wrappedCategoryName, destination: ExpenseDetailView(category: category))
 //                        Text("$ \(category.totalSpending)")
                     }
                 }

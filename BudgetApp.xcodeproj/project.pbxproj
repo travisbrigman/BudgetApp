@@ -17,9 +17,10 @@
 		0F52DF1E2608C94100F6F6D2 /* EditSpendingCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F52DF1D2608C94100F6F6D2 /* EditSpendingCategory.swift */; };
 		0F52DF202608C96900F6F6D2 /* EditCategoryExpense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F52DF1F2608C96900F6F6D2 /* EditCategoryExpense.swift */; };
 		0F52DF222608C99600F6F6D2 /* ExpenseDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F52DF212608C99600F6F6D2 /* ExpenseDetailView.swift */; };
-		0F52DF242608C9BA00F6F6D2 /* SpendingCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F52DF232608C9BA00F6F6D2 /* SpendingCategory.swift */; };
-		0F52DF272608CA3700F6F6D2 /* SpendingCategory+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F52DF252608CA3700F6F6D2 /* SpendingCategory+CoreDataClass.swift */; };
-		0F52DF282608CA3700F6F6D2 /* SpendingCategory+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F52DF262608CA3700F6F6D2 /* SpendingCategory+CoreDataProperties.swift */; };
+		0F8F72BB2609FC710084EA68 /* SpendingCategory+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8F72B72609FC710084EA68 /* SpendingCategory+CoreDataClass.swift */; };
+		0F8F72BC2609FC710084EA68 /* SpendingCategory+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8F72B82609FC710084EA68 /* SpendingCategory+CoreDataProperties.swift */; };
+		0F8F72BD2609FC710084EA68 /* CategoryExpense+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8F72B92609FC710084EA68 /* CategoryExpense+CoreDataClass.swift */; };
+		0F8F72BE2609FC710084EA68 /* CategoryExpense+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8F72BA2609FC710084EA68 /* CategoryExpense+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,9 +36,10 @@
 		0F52DF1D2608C94100F6F6D2 /* EditSpendingCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSpendingCategory.swift; sourceTree = "<group>"; };
 		0F52DF1F2608C96900F6F6D2 /* EditCategoryExpense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCategoryExpense.swift; sourceTree = "<group>"; };
 		0F52DF212608C99600F6F6D2 /* ExpenseDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseDetailView.swift; sourceTree = "<group>"; };
-		0F52DF232608C9BA00F6F6D2 /* SpendingCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpendingCategory.swift; sourceTree = "<group>"; };
-		0F52DF252608CA3700F6F6D2 /* SpendingCategory+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SpendingCategory+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		0F52DF262608CA3700F6F6D2 /* SpendingCategory+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SpendingCategory+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		0F8F72B72609FC710084EA68 /* SpendingCategory+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "SpendingCategory+CoreDataClass.swift"; path = "BudgetApp/Model/SpendingCategory+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		0F8F72B82609FC710084EA68 /* SpendingCategory+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "SpendingCategory+CoreDataProperties.swift"; path = "BudgetApp/Model/SpendingCategory+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		0F8F72B92609FC710084EA68 /* CategoryExpense+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CategoryExpense+CoreDataClass.swift"; path = "BudgetApp/Model/CategoryExpense+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		0F8F72BA2609FC710084EA68 /* CategoryExpense+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CategoryExpense+CoreDataProperties.swift"; path = "BudgetApp/Model/CategoryExpense+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,14 +72,11 @@
 		0F52DF052608C78000F6F6D2 /* BudgetApp */ = {
 			isa = PBXGroup;
 			children = (
-				0F52DF252608CA3700F6F6D2 /* SpendingCategory+CoreDataClass.swift */,
-				0F52DF262608CA3700F6F6D2 /* SpendingCategory+CoreDataProperties.swift */,
+				0F8F72C0260A18810084EA68 /* Delegates */,
+				0F8F72BF260A18640084EA68 /* Model */,
 				0F52DF212608C99600F6F6D2 /* ExpenseDetailView.swift */,
-				0F52DF232608C9BA00F6F6D2 /* SpendingCategory.swift */,
 				0F52DF1F2608C96900F6F6D2 /* EditCategoryExpense.swift */,
 				0F52DF1D2608C94100F6F6D2 /* EditSpendingCategory.swift */,
-				0F52DF062608C78000F6F6D2 /* AppDelegate.swift */,
-				0F52DF082608C78000F6F6D2 /* SceneDelegate.swift */,
 				0F52DF0D2608C78000F6F6D2 /* ContentView.swift */,
 				0F52DF0F2608C78900F6F6D2 /* Assets.xcassets */,
 				0F52DF142608C78900F6F6D2 /* LaunchScreen.storyboard */,
@@ -94,6 +93,26 @@
 				0F52DF122608C78900F6F6D2 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		0F8F72BF260A18640084EA68 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0F8F72B72609FC710084EA68 /* SpendingCategory+CoreDataClass.swift */,
+				0F8F72B82609FC710084EA68 /* SpendingCategory+CoreDataProperties.swift */,
+				0F8F72B92609FC710084EA68 /* CategoryExpense+CoreDataClass.swift */,
+				0F8F72BA2609FC710084EA68 /* CategoryExpense+CoreDataProperties.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0F8F72C0260A18810084EA68 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				0F52DF062608C78000F6F6D2 /* AppDelegate.swift */,
+				0F52DF082608C78000F6F6D2 /* SceneDelegate.swift */,
+			);
+			path = Delegates;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -168,15 +187,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F52DF202608C96900F6F6D2 /* EditCategoryExpense.swift in Sources */,
-				0F52DF282608CA3700F6F6D2 /* SpendingCategory+CoreDataProperties.swift in Sources */,
+				0F8F72BB2609FC710084EA68 /* SpendingCategory+CoreDataClass.swift in Sources */,
 				0F52DF222608C99600F6F6D2 /* ExpenseDetailView.swift in Sources */,
 				0F52DF0C2608C78000F6F6D2 /* BudgetApp.xcdatamodeld in Sources */,
+				0F8F72BE2609FC710084EA68 /* CategoryExpense+CoreDataProperties.swift in Sources */,
+				0F8F72BD2609FC710084EA68 /* CategoryExpense+CoreDataClass.swift in Sources */,
 				0F52DF072608C78000F6F6D2 /* AppDelegate.swift in Sources */,
+				0F8F72BC2609FC710084EA68 /* SpendingCategory+CoreDataProperties.swift in Sources */,
 				0F52DF1E2608C94100F6F6D2 /* EditSpendingCategory.swift in Sources */,
 				0F52DF0E2608C78000F6F6D2 /* ContentView.swift in Sources */,
 				0F52DF092608C78000F6F6D2 /* SceneDelegate.swift in Sources */,
-				0F52DF272608CA3700F6F6D2 /* SpendingCategory+CoreDataClass.swift in Sources */,
-				0F52DF242608C9BA00F6F6D2 /* SpendingCategory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
