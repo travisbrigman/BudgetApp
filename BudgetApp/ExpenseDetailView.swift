@@ -10,7 +10,7 @@ import SwiftUI
 
 struct ExpenseDetailView: View {
     @Environment(\.managedObjectContext) var moc
-    let category: SpendingCategory
+    @ObservedObject var category: SpendingCategory
     @State private var isShowingEditExpenseItem = false
     
     var body: some View {
@@ -20,7 +20,7 @@ struct ExpenseDetailView: View {
             HStack {
                 Text(lineItem.wrappedExpenseName)
                 Spacer()
-                Text("$\(lineItem.expenseAmount)")
+                Text("$\(lineItem.expenseAmount, specifier: "%g")")
             }
             .padding(.horizontal)
         }
@@ -35,7 +35,7 @@ struct ExpenseDetailView: View {
         })
         .sheet(isPresented: $isShowingEditExpenseItem) {
             EditCategoryExpense(spendingCategory: self.category)
-                .environmentObject(self.category)
+            .environment(\.managedObjectContext, self.moc)
         }
  
     }

@@ -26,11 +26,12 @@ struct EditCategoryExpense: View {
                 }
 
                 Section {
-                    List(spendingCategory.expensesArray, id: \.self ) { item in
+                    Text("Foo")
+                    ForEach(spendingCategory.expensesArray, id: \.self ) { item in
                         HStack {
                             Text(item.wrappedExpenseName)
                             Spacer()
-                            Text("$\(item.expenseAmount)")
+                            Text("$\(item.expenseAmount, specifier: "%g")")
                         }
                         .padding(.horizontal)
                     }
