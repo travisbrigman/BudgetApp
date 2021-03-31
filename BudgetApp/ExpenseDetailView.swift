@@ -16,16 +16,19 @@ struct ExpenseDetailView: View {
     var body: some View {
         
         NavigationView{
-            List(category.expensesArray, id: \.self) { lineItem in
-            HStack {
-                Text(lineItem.wrappedExpenseName)
-                Spacer()
-                Text("$\(lineItem.expenseAmount, specifier: "%g")")
+            List {
+                ForEach(category.expensesArray, id: \.self) { lineItem in
+                    HStack {
+                        Text(lineItem.wrappedExpenseName)
+                        Spacer()
+                        Text("$\(lineItem.expenseAmount, specifier: "%g")")
+                    }
+                    .padding(.horizontal)
+                }
+                .onDelete(perform: deleteExpense)
             }
-            .padding(.horizontal)
         }
-        }
-            
+        
         .navigationBarItems(trailing: Button(action: {
             self.isShowingEditExpenseItem = true
             
@@ -35,9 +38,17 @@ struct ExpenseDetailView: View {
         })
         .sheet(isPresented: $isShowingEditExpenseItem) {
             EditCategoryExpense(spendingCategory: self.category)
-            .environment(\.managedObjectContext, self.moc)
+                .environment(\.managedObjectContext, self.moc)
         }
- 
+        
+    }
+    
+    func deleteExpense(at offsets: IndexSet) {
+        for offset in offsets {
+            let expense = category.expensesArray[offset]
+            moc.delete(expense)
+        }
+        try? moc.save()
     }
 }
 
@@ -47,5 +58,5 @@ struct ExpenseDetailView: View {
 //    }
 //}
 
- 
- 
+
+
