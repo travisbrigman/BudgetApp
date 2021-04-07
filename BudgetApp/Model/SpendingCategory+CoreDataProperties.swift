@@ -31,6 +31,14 @@ extension SpendingCategory {
             $0.wrappedExpenseName < $1.wrappedExpenseName
         }
     }
+    
+    public var totalSpendingInCategory: Double {
+        var expsensesSum = 0.0
+        for expense in expensesArray {
+            expsensesSum += expense.expenseAmount
+        }
+        return expsensesSum
+    }
 
 }
 

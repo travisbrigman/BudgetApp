@@ -30,42 +30,43 @@ struct ContentView: View {
     @State private var isShowingEditSpending = false
     
     
-//    var categorySum: String {
-//        var allSpending = 0.0
-//        for category in spendingCategories {
-//            allSpending += Double(category.totalSpending) ?? 0
-//        }
-//        return String(allSpending)
-//    }
+    var categorySum: String {
+        var allSpending = 0.0
+        for category in spendingCategories {
+            allSpending += category.expensesArray.reduce(0.0) { $0 + $1.expenseAmount }
+        }
+        return String(allSpending)
+    }
     
-//    var takeHomeRemainder: String {
-//        guard let monthlyNetIncome = Double(budget.monthlyNet), let spendingCategoryTotal = Double(categorySum) else { return "No Value" }
-//
-//        let monthlyRemainder = monthlyNetIncome - spendingCategoryTotal
-//        return String(monthlyRemainder)
-//
-//    }
+    var takeHomeRemainder: String {
+        guard let monthlyNetIncome = Double(budget.monthlyNet), let spendingCategoryTotal = Double(categorySum) else { return "No Value" }
+
+        let monthlyRemainder = monthlyNetIncome - spendingCategoryTotal
+        return String(monthlyRemainder)
+
+    }
     
     var body: some View {
         NavigationView{
             VStack {
                 Section {
+                    TextField("take home pay", text: $budget.monthlyTakeHomePay)
+                        .padding()
                     Text("Monthly Take Home Pay: $\(budget.monthlyTakeHomePay)")
                     Text("10% tithe: $\(budget.tithe)")
                     Text("Monthly Net: $\(budget.monthlyNet)")
                 }
-                
-                TextField("take home pay", text: $budget.monthlyTakeHomePay)
-                
                 List(spendingCategories, id: \.self) { category in
                     VStack {
                         NavigationLink(category.wrappedCategoryName, destination: ExpenseDetailView(category: category))
-//                        Text("$ \(category.totalSpending)")
+                        Text("$ \(category.totalSpendingInCategory, specifier: "%g")")
                     }
                 }
-//                Text("$ \(categorySum)")
-//                Text(takeHomeRemainder)
-            }
+                Text("Total Expenses $\(categorySum)")
+                Text("Take Home After Expenses $\(takeHomeRemainder)")
+            
+        }
+            
             .navigationBarItems(trailing: Button(action: {
                 self.isShowingEditSpending = true
                 
